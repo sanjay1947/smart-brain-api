@@ -41,7 +41,7 @@ app.use(bodyParser.json());
 
 // after deploying
 // app.get('/', (req, res)=> {	res.send(database.users)})
-app.get('/', (req, res)=> { res.send("wroking")})
+app.get('/', (req, res)=> { res.send('wroking')})
 
 app.post('/signin', signin.handleSignin(db, bcrypt))
 
@@ -70,6 +70,7 @@ app.post('/imageurl', (req, res) => {image.handleApiCall(req, res)})
 
 // to run port as per environment
  app.listen(process.env.PORT || 3000, ()=> {
+  console.log(process.env.PORT);
  	console.log('app running smoothly on port ${process.env.PORT}');
  })
 
