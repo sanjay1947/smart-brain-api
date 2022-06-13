@@ -1,3 +1,9 @@
+// And when you want to run the project locally, 
+// just run in your terminal npm start:dev and it will load fileName.js with nodemon.
+
+// While in Heroku, npm start runs by default and loads fileName.js from a normal 
+// node command and you get rid of that error.
+
 
 const express = require('express');
 const bodyParser = require('body-parser'); // most commonly used middleware
@@ -33,8 +39,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-
-app.get('/', (req, res)=> {	res.send(database.users)})
+// after deploying
+// app.get('/', (req, res)=> {	res.send(database.users)})
+app.get('/', (req, res)=> { res.send("wroking")})
 
 app.post('/signin', signin.handleSignin(db, bcrypt))
 
@@ -63,7 +70,7 @@ app.post('/imageurl', (req, res) => {image.handleApiCall(req, res)})
 
 // to run port as per environment
  app.listen(process.env.PORT || 3000, ()=> {
- 	console.log("app running smoothly on port ${process.env.PORT}");
+ 	console.log('app running smoothly on port ${process.env.PORT}');
  })
 
 /* 
